@@ -1,43 +1,31 @@
+{% load static %}
 <html>
     <head>
-        <title>eupwi blog</title>
+        <div class="page-header">
+            <h1><a href="/">eupwi Blog</a></h1>
+            <div class="post">
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="post">
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
         <div>
-            <h1><a href="/">eupwi Blog</a></h1>
+            <h1><a href="/">eupwi blog</a></h1>
         </div>
 
-        <div>
-            <p></p>
-            <h2><a href="">My first post</a></h2>
-            <p>.Прямое продолжение POX VAWË 0.5, вышедшего за три недели до новой части.
-
-                Вероятнее всего, работа над альбомом началась с конца 2022 года, как Платина показал отрывок совместного с Гришей трека «YTPO». Такового промо, как и с первой частью, опять же не было, но было показано примерно пять сниппетов на такие треки «Искс», «Ради», «Крит», «ФХЧВПЧ (Икöта)» и «Порш». На последний из вышеперечисленных также был опубликован клип в день выхода альбома.
-                
-                Помимо знакомых гостей, и так уже фитовавших с Будой, на альбоме отметились участники широко хайпанувшего объединения 52 — Glocki52 и FRIENDLY THUG 52 NGG, фит с которым Гриша комментировал следующим образом:
-                
-                да давно хотели с Саньком поработать, но не хотелось мне по лёгкой, на вэсткоусте. а тут как будто золотая середина. тот случай когда начал писать — уже знал, что хочу позвать Саню
-                
-                — via Twitch
-                
-                Неожиданным гостем так же стал и Синекдоха Монток, о котором аналогично Буда высказался в своём Телеграм-канале:
-                
-                давно знаком с творчеством старичка, всегда очень импонировало)) и вот родиласaь песня, на которой отчетливо его увидел/услышал :)
-                
-                На POX VAWË артист исследует новые направления и всё больше погружается в стилистику футуристичного трэп-звучания, смешивая его и с более откровенными работами, в которых рассказывает о своих личных загонах и чувствах на фоне яркого рэперского образа. Как пример можно взять треки «Бесполезный» или же «Счастлив? :(».
-                
-                В рамках присутствующего разнообразия выбранной музыки и харизмы артиста, все композиции обеих частей образуют единый концептуальный релиз.</p>
-        </div>
-
-        <div>
-            <p>published: 27.02.2024, 10:56</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
     </body>
 </html>
